@@ -1,11 +1,12 @@
 # TwitterBotGNN
-Implementation of a Graph Neural Network for Twitter Bot Detection. Unique from existing scholarship, this methodology includes the use of user meta information in the graph network, as well as a distinction of relationships (tweets) between the users and bots. Through the use of different graph aggregation algorithms, we will be able to distinguish between users and bots via node classification.
+Implementation of a Graph Neural Network for Twitter Bot Detection. Unique from existing scholarship, this methodology includes the use of user meta information in the graph network, as well as a distinction of relationships (tweets) between the users and bots. Through the use of different graph aggregation algorithms, we will be able to distinguish between users and bots via node classification. The following presents our overall methodology and model architecture:
 
-<img src="img/overview.png" alt="overview" />
+<img src="img/overview.png" alt="overview" width="692" height="373" />
 
 ## Data Source
-<img src="https://opengraph.githubassets.com/1909eedc517f7461ee3670e402d7d3a871d33f53fe42208ec98df04760bc3982/LuoUndergradXJTU/TwiBot-22" alt="twibot22" />
-The **Twibot-22** dataset that was used in this project can be retrieved from their official [github](https://github.com/LuoUndergradXJTU/TwiBot-22?tab=readme-ov-file) or the (Bot Repository)[https://botometer.osome.iu.edu/bot-repository/datasets.html]. Do note that special permission must be seek from the creator of this dataset and it can only be used for <ins>academic/research purposes</ins>.
+The **Twibot-22** dataset that was used in this project can be retrieved from their official [github](https://github.com/LuoUndergradXJTU/TwiBot-22?tab=readme-ov-file) or the [Bot Repository](https://botometer.osome.iu.edu/bot-repository/datasets.html). Do note that special permission must be seek from the creator of this dataset and it can only be used for <ins>academic/research purposes</ins>.
+
+<img src="https://opengraph.githubassets.com/1909eedc517f7461ee3670e402d7d3a871d33f53fe42208ec98df04760bc3982/LuoUndergradXJTU/TwiBot-22" alt="twibot22" width="500" height="250" />
 
 ## Disclaimer
 Due to the sheer size of the files inside the dataset and limited computational resources on our end, we have employed MongoDB to query the individual datasets to downsample and process the data. The instructions to install MongoDB Compass and query the data is documented in the following section.
@@ -41,8 +42,9 @@ The following sequence of Jupyter Notebooks serve as the methodology for our res
 - Run this script on each `tweets.json` by querying the data using MongoDB.
 - We utilised a disproportionate stratified sampling methodology to obtain a sample of bot and human accounts.
 - We engaged in a series of Feature Engineering and Feature Learning steps by incorporating domain knowledge.
+The following diagram shows our data engineering scheme:
 
-<img src="img/data_extraction.png" alt="data_extraction" />
+<img src="img/data_extraction.png" alt="data_extraction" width="531" height="280" />
 
 2. `Step2_Feature_Selection.ipynb` (**Run this file using `user_0.csv to user_8.csv` and `graph_0.csv to graph_8.csv` generated from the previous step**)
 - There were a total of 9 tweet files within the dataset containing tweet, retweet and post information between users.
@@ -64,8 +66,10 @@ This `Step3_Bot_Clusters.ipynb` notebook is a script that allows us to get the s
 - After training the models, we were able to identify the false negatives (bots misclassified as humans) and we attempted to cluster the bots to decipher the reasons why they were misclassified.
 - We also run the model on 3 subset of features: all features, top 10 important features and the other features to observe if feature selection plays a part in the performance of our model.
 
-<img src="img/gnn.png" alt="gnn" />
+## Final Proposed GNN
+<img src="img/gnn.png" alt="gnn" width="631" height="319" />
 
+## Files 
 The following are the files (primary and intermediary) that will be generated/used in this project.
 1. `user_0.csv to user_8.csv`
 - The csv contains sampled users and their extracted and original features from the Twibot-22 dataset
